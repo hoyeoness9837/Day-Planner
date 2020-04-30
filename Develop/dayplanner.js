@@ -1,16 +1,17 @@
 const showCurrentDay = document.getElementById("currentDay");
 showCurrentDay.innerText = moment().format("dddd, MMM Do YYYY");
-const SAVED_DATE_LS = "savedDate";
+const saveBtn = document.querySelector(".js-saveBtn");
+const SAVED_HOUR_LS = "savedHour";
 const SAVED_TEXT_LS = "savedText";
-let savedDates = [];
+let savedHours = [];
 let savedTexts = [];
 let hours = moment().format("h");
 
 // 1. you want to save text when you click save, click will set the item of textarea in local storage. also save time in localstorage if savedDate is saved ealier than currentdate, add class to the html of textarea that.past,
 
-function saveDate() {
+function saveHour() {
   if (typeof Storage !== "undefined") {
-    localStorage.setItem("savedDate", hours);
+    localStorage.setItem("savedHour", hours);
   }
 }
 
@@ -19,24 +20,20 @@ function saveText() {
   if (typeof Storage !== "undefined") {
     localStorage.setItem("savedText", plans);
   }
-  saveDate();
+  saveHour();
 }
 
-function loadDate() {
-  localStorage.getItem(JSON.parse(SAVED_DATE_LS));
+function loadHour() {
+  const loadedHours = localStorage.getItem(SAVED_HOURS_LS);
+  if (loadedHours !== null) {
+    const parsedHours = JSON.parse(loadedHours);
+    parsedHours;
+    let currentHour = moment().format("h");
+    if (parsedHours < currentHour) {
+      saveBtn.parentElement.classList.add("future");
+    }
+  }
 }
 
-// const textareas = Array.from(document.getElementsByClassName("textarea"));
-
-// textareas.forEach((choice) => {
-//   choice.addEventListener("click", (e) => {
-//     const selectedHour = e.target;
-//     const selectednumber = selectedHour.dataset["number"];
-//     let currentdate = new Date();
-//     const classToApply =
-//       selectednumber > currentdate.getHours() ? "future" : "present";
-//     if (classToApply === "future") {
-//       selectedhour.parentElement.classList.add(classToApply);
-//     }
-//   });
-// });
+function init() {}
+init();
