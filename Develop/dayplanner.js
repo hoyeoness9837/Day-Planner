@@ -24,16 +24,18 @@ function saveText() {
 }
 
 function loadHour() {
-  const loadedHours = localStorage.getItem(SAVED_HOURS_LS);
+  const loadedHours = localStorage.getItem(SAVED_HOUR_LS);
   if (loadedHours !== null) {
     const parsedHours = JSON.parse(loadedHours);
     parsedHours;
     let currentHour = moment().format("h");
     if (parsedHours < currentHour) {
-      saveBtn.parentElement.classList.add("future");
+      saveBtn.setAttribute("id", "future");
     }
   }
 }
 
-function init() {}
+function init() {
+  loadHour();
+}
 init();
