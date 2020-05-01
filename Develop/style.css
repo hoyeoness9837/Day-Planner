@@ -22,7 +22,7 @@ textarea {
   border-bottom: 10px solid black;
 }
 
-/*change below styles*/
+/*apply media query to interact in mobile user UX*/
 @media screen and (max-width: 576px) {
   .containerwrap {
     display: flex;
@@ -30,6 +30,7 @@ textarea {
     justify-content: space-between;
   }
 }
+/*display it as flex, align them with more flexbox features*/
 .container {
   display: flex;
   background-color: white;
@@ -43,7 +44,7 @@ textarea {
 .item {
   height: 60px;
   padding: 20px;
-  margin: 1px;
+  margin: 2px;
 }
 
 .description {
@@ -94,7 +95,7 @@ textarea {
   flex-basis: 2%;
 }
 
-.js-saveBtn i:hover {
+.js-saveBtn:hover {
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
